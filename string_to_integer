@@ -1,0 +1,38 @@
+class Solution:
+    def myAtoi(self, s: str) -> int:
+        s = s.strip()
+        firstLetter = True
+        stg = ''
+        neg = False
+        for letter in s:
+            if firstLetter:
+                if letter == '-':
+                    neg = True
+                elif letter == "+":
+                    firstLetter = False
+                    continue
+                else:
+                    try:
+                        stg = stg + str(int(letter))
+                    except:
+                        return 0
+                firstLetter = False
+
+            else:
+
+                try:
+                    stg = stg + str(int(letter))
+                except:
+                    break
+
+        if neg:
+            stg = '-' + stg
+        try:
+            ans = int(stg)
+        except:
+            return 0
+        if -2 ** 31 >= ans:
+            return -2 ** 31 
+        elif 2 ** 31 -1 < ans:
+            return 2 ** 31 -1
+        return ans
