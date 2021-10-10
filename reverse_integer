@@ -1,0 +1,16 @@
+class Solution:
+    def reverse(self, x: int) -> int:
+        stg = str(x)
+        newstg = ""
+        neg=False
+        for letter in reversed(stg):
+            if letter == '-':
+                neg = True
+                continue
+            newstg = newstg + letter
+        if neg:
+            newstg = '-' + newstg
+        ans =  int(newstg)
+        if not -2**31 <=ans <= 2**31:
+            return 0
+        return ans
