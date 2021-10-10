@@ -1,0 +1,15 @@
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        snum = str(x)
+        leng = len(str(x))
+        cutoff = leng/2
+        for letter in enumerate(str(x)):
+            if (letter[0]) == 1 and letter[1] == '-':
+                return False
+            if letter[0] > cutoff:
+                break
+            index = leng - letter[0] - 1
+            if (snum[index]) != letter[1]:
+                return False
+                                                       
+        return True
