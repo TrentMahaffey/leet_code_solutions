@@ -1,0 +1,8 @@
+class Solution(object):
+    def twoSum(self, nums, target):
+        dc = {}
+        for item in enumerate(nums):
+            secondNumber = target - item[1]
+            if secondNumber in dc.keys():
+                return([dc[secondNumber], item[0]])
+            dc.update({item[1]:item[0]})
